@@ -82,7 +82,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const forceParty = location.hash === "#fete";
 const fmt = (n) => Math.floor(n).toLocaleString("fr-FR");
 const daysUntil = (d) => Math.max(0, Math.ceil((d - new Date()) / 86400000));
-const buzz = (ms = 15) => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} };
+const buzz = (ms = 15) => { try { if (navigator.vibrate && (!navigator.userActivation || navigator.userActivation.hasBeenActive)) navigator.vibrate(ms); } catch (e) {} };
 
 const gf = $("gfonts"); if (gf) gf.media = "all";
 
@@ -521,3 +521,96 @@ $("yes-btn").addEventListener("click", sayYes);
 
 /* ---------- last page ---------- */
 $("chapter-btn").addEventListener("click", (e) => { e.currentTarget.hidden = true; $("chapter3").hidden = false; burst(160, .4); buzz(40); });
+
+/* ---------- greeting by time of day ---------- */
+(function greet() {
+  const h = new Date().getHours();
+  const g = h >= 5 && h < 12 ? "Sba7 lkhir a Samia ☀️" : h < 18 ? "Nhar sa3id a Samia 🌤️" : h < 23 ? "Msa lkhir a Samia 🌙" : "Lila sa3ida a Samia ✨";
+  $("greeting").textContent = g;
+})();
+
+/* ---------- word of the day ---------- */
+const DAILY = [
+  "Nti a7ssen 7aja w9e3at liya f 7yati.",
+  "Kol nhar m3ak kayswa 3am.",
+  "Ila tbasmti lyoum, rak dirti nhari zwin.",
+  "Kanfker fik… dima, w bla ma n3ya.",
+  "Nti ra7a dyali f had dnya.",
+  "Wakha lb3d, 9albi 3ndek.",
+  "Dhektek hiya lmusic li kanbghi.",
+  "M3ak, kolchi kaywelli sahel.",
+  "Kanbghik lyoum ktar mn lbar7.",
+  "Nti l7olm li 3aych m3aya f lw9i3.",
+  "Ma kaynch b7alek, w ma ghadich ykoun.",
+  "Ila 3yiti lyoum, 3ndek wa7ed kaybghik bzaf.",
+  "Kol message mnek kayfer7ni.",
+  "Nti lmalja2 dyali.",
+  "7ta l'ayam l3adiya katwelli zwina m3ak.",
+  "Ana fakhour bik, dima.",
+  "Kantmenna nchouf dhektek daba.",
+  "Nti a7ssen « sba7 lkhir » w a7ssen « tsb7i 3la khir ».",
+  "Ghadi nb9a m3ak, f lfar7 w f l7ozn.",
+  "Lyoum, ghedda, w dima: nti.",
+];
+(function wordOfDay() {
+  const now = new Date();
+  const dayIndex = Math.floor((new Date(now.getFullYear(), now.getMonth(), now.getDate()) - START_DATE) / 86400000);
+  $("today-text").textContent = DAILY[((dayIndex % DAILY.length) + DAILY.length) % DAILY.length];
+  $("today-date").textContent = "Kelma dyal lyoum · " + now.toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+})();
+
+/* ---------- memory game ---------- */
+const GAME_PICS = ["photo-01.jpg", "photo-04.jpg", "photo-05.jpg", "photo-06.jpg", "photo-09.jpg", "photo-16.jpg"];
+let gameOpen = [], gameBusy = false, gameMoves = 0, gamePairs = 0;
+function newGame() {
+  const grid = $("memory-grid");
+  grid.innerHTML = "";
+  gameOpen = []; gameBusy = false; gameMoves = 0; gamePairs = 0;
+  $("game-moves").textContent = "0 mra"; $("game-pairs").textContent = "0/6"; $("game-win").hidden = true;
+  const deckPics = [...GAME_PICS, ...GAME_PICS].sort(() => Math.random() - .5);
+  deckPics.forEach((pic) => {
+    const c = document.createElement("button");
+    c.className = "mcard"; c.dataset.pic = pic;
+    c.innerHTML = `<span class="in"><span class="face front">♥</span><span class="face back"><img src="images/thumbs/${pic}" alt="" loading="lazy"></span></span>`;
+    c.addEventListener("click", () => flipCard(c));
+    grid.appendChild(c);
+  });
+}
+function flipCard(c) {
+  if (gameBusy || c.classList.contains("open") || c.classList.contains("done")) return;
+  c.classList.add("open"); buzz(8);
+  gameOpen.push(c);
+  if (gameOpen.length < 2) return;
+  gameMoves++; $("game-moves").textContent = gameMoves + " mra";
+  const [a, b] = gameOpen;
+  if (a.dataset.pic === b.dataset.pic) {
+    a.classList.add("done"); b.classList.add("done"); gameOpen = [];
+    gamePairs++; $("game-pairs").textContent = gamePairs + "/6"; buzz(25);
+    if (gamePairs === GAME_PICS.length) { $("game-win").hidden = false; burst(120, .5); buzz([30, 40, 30]); }
+  } else {
+    gameBusy = true;
+    setTimeout(() => { a.classList.remove("open"); b.classList.remove("open"); gameOpen = []; gameBusy = false; }, 850);
+  }
+}
+$("game-reset").addEventListener("click", newGame);
+newGame();
+
+/* ---------- hold-to-send hug ---------- */
+const hugBtn = $("hug-heart"), hugFill = $("hug-fill");
+let hugLevel = 0, hugHolding = false, hugDone = false, hugLast = 0;
+function hugTick(t) {
+  const dt = hugLast ? (t - hugLast) / 1000 : 0; hugLast = t;
+  if (!hugDone) hugLevel = Math.min(1, Math.max(0, hugLevel + (hugHolding ? dt / 2.2 : -dt / 1.2)));
+  hugFill.setAttribute("y", 90 - hugLevel * 98);
+  $("hug-pct").textContent = hugDone ? "∞" : Math.round(hugLevel * 100) + "%";
+  if (hugLevel >= 1 && !hugDone) {
+    hugDone = true; hugBtn.classList.add("full"); hugBtn.classList.remove("pressing");
+    $("hug-done").hidden = false; burst(150, .5); buzz([40, 50, 40, 50, 120]);
+  }
+  if (hugHolding || (hugLevel > 0 && !hugDone)) requestAnimationFrame(hugTick); else hugLast = 0;
+}
+function hugStart(e) { e.preventDefault(); if (hugDone) return; hugHolding = true; hugBtn.classList.add("pressing"); buzz(10); if (!hugLast) requestAnimationFrame(hugTick); }
+function hugEnd() { hugHolding = false; hugBtn.classList.remove("pressing"); }
+hugBtn.addEventListener("pointerdown", hugStart);
+["pointerup", "pointerleave", "pointercancel"].forEach((t) => hugBtn.addEventListener(t, hugEnd));
+hugBtn.addEventListener("contextmenu", (e) => e.preventDefault());

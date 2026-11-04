@@ -51,6 +51,7 @@
     <div class="cover-card">
       <span class="tape t1"></span><span class="tape t2"></span>
       <p class="label">Carnet dyalna · N°2</p>
+      <p class="greeting hand" id="greeting"></p>
       <h1><span class="hand">Amine</span><button class="amp" id="secret-amp" aria-label="♥">&amp;</button><span class="hand">Samia</span></h1>
       <p class="cover-sub">2 ans dyal l7ob… mktouba b chwiya b chwiya.</p>
       <div class="cover-photo">
@@ -81,6 +82,16 @@
       <div class="num"><span>🌅</span><b id="n-sunsets">0</b><small>ghroub dyal chems, w kol wa7ed fih nti f bali</small></div>
       <div class="num"><span>🌙</span><b id="n-nights">0</b><small>lila dyal « tsb7i 3la khir »</small></div>
       <div class="num"><span>⏱️</span><b id="n-hours">0</b><small>sa3a dyal l7ob</small></div>
+    </div>
+  </section>
+
+  <!-- ============ WORD OF THE DAY ============ -->
+  <section class="page" id="today">
+    <div class="today-card">
+      <span class="tape t2"></span>
+      <p class="label" id="today-date">Kelma dyal lyoum</p>
+      <p class="hand today-text" id="today-text"></p>
+      <p class="today-hint">Rje3i ghedda… kayna kelma jdida kol nhar 😉</p>
     </div>
   </section>
 
@@ -139,12 +150,12 @@
         </div>
       </article>
       <article class="stop">
-        <span class="pin">😂</span>
+        <span class="pin">✌️</span>
         <div class="stop-card">
-          <img style="object-position: 50% 0%" src="images/photo-15.jpg" alt="Tswira mdhka" loading="lazy">
-          <span class="stop-date">Reel</span>
-          <h3>Tswira li katdhakni</h3>
-          <p>Kna gdam f sawy3, chefna reel fih zouj dayrin hadi, w glna aji ndirouha 7ta 7na. Kna fer7anin bzaaaf.</p>
+          <img style="object-position: 50% 45%" src="images/photo-16.jpg" alt="Amine w Samia" loading="lazy">
+          <span class="stop-date">Lhdat sghira</span>
+          <h3>Nti w ana, b l9alb</h3>
+          <p>Selfies, dhkat, w ayam 3adiyin… walakin m3ak kolhom katwelli dkriyat kankhbbihom f 9albi.</p>
         </div>
       </article>
       <article class="stop">
@@ -172,6 +183,16 @@
     </div>
   </section>
 
+  <!-- ============ MEMORY GAME ============ -->
+  <section class="page" id="game">
+    <h2 class="title">L3ba <em>sghira</em> 🎮</h2>
+    <p class="sub">L9ay joj tsawer kif kif… b9al ch7al mn mra katklixi</p>
+    <div class="memory-grid" id="memory-grid"></div>
+    <p class="game-stats"><span class="hand" id="game-moves">0 mra</span> · <span class="hand" id="game-pairs">0/6</span></p>
+    <p class="hand game-win" id="game-win" hidden>Bravo a 7bibti! 3a9la dyal dahab 😍</p>
+    <button class="btn ghost" id="game-reset">3awdi l3ba ↺</button>
+  </section>
+
   <!-- ============ JAR OF REASONS ============ -->
   <section class="page" id="jar-page">
     <h2 class="title">Bocal dyal <em>a3lach kanbghik</em></h2>
@@ -185,6 +206,21 @@
       </button>
     </div>
     <button class="btn" id="jar-btn">Khrrji wa7da 💌</button>
+  </section>
+
+  <!-- ============ HUG ============ -->
+  <section class="page" id="hug">
+    <h2 class="title">Sifti liya <em>3n9a</em> 🤗</h2>
+    <p class="sub">Brki 3la l9alb w khllih 7ta yt3ammar… (w ana ghadi n7esha mn hna)</p>
+    <button class="hug-heart" id="hug-heart" aria-label="Brki bach tsifti 3n9a">
+      <svg viewBox="0 -8 100 98" aria-hidden="true">
+        <defs><clipPath id="hug-clip"><path d="M50 86 C20 64 4 48 4 28 A22 22 0 0 1 50 16 A22 22 0 0 1 96 28 C96 48 80 64 50 86 Z"/></clipPath></defs>
+        <path d="M50 86 C20 64 4 48 4 28 A22 22 0 0 1 50 16 A22 22 0 0 1 96 28 C96 48 80 64 50 86 Z" fill="#fff8ef" stroke="#c8553d" stroke-width="3"/>
+        <rect id="hug-fill" x="0" y="90" width="100" height="98" fill="#e07a5f" clip-path="url(#hug-clip)"/>
+      </svg>
+      <span class="hug-pct hand" id="hug-pct">0%</span>
+    </button>
+    <p class="hand hug-done" id="hug-done" hidden>3n9a wslatni 🤗 — w hadi wa7da mn 3ndi lik, Amine ❤️</p>
   </section>
 
   <!-- ============ NIGHT SKY ============ -->
