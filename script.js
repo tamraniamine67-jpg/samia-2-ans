@@ -15,10 +15,10 @@ const PHOTOS = [
   { file: "photo-08.jpg", cap: "Nour 3la nour" },
   { file: "photo-10.jpg", cap: "Bab l7ob mfto7" },
   { file: "photo-03.jpg", cap: "Hna… bla filtre" },
-  { file: "photo-11.jpg", cap: "Style ma kaytkhtarfch" },
+  { file: "photo-11.jpg", cap: "Style o 3lamn kiji" },
   { file: "photo-12.jpg", cap: "Lil zwin b sbabek 🌙" },
-  { file: "photo-13.jpg", cap: "Klik… w ana tbelt 📸" },
-  { file: "photo-14.jpg", cap: "F kol tswira, ghir nti" },
+  { file: "photo-13.jpg", cap: "Klik… w ana dbt fk 📸" },
+  { file: "photo-14.jpg", cap: "F kol tswira fiha nti mnawra" },
 ];
 
 const LANGS = [
@@ -30,12 +30,12 @@ const LANGS = [
 
 const REASONS = [
   "Dhektek… katbeddel nhari kaml f tanya.",
-  "3inik — fihom ldar dyali.",
+  "3inik fihom ldar dyali.",
   "7it nti sadi9a dyali 9bel ma tkouni 7bibti.",
   "Sbrek 3liya, 7ta f l'ayam s3ab.",
   "Katfhmini bla ma ngoul walo.",
   "Katkhllini nwelli wa7ed a7ssen.",
-  "9albek lkbir m3a nas kamlin.",
+  "9lbek kbiir o fih ana kndoor.",
   "Kat3tini lhedra li kont m7taj, f lw9t li kont m7tajha.",
   "Dik dhka dyalek f awel tswira dyalna 🤍",
   "Katfekri fina bjoj, machi ghir f rassek.",
@@ -45,7 +45,7 @@ const REASONS = [
 
 const STARS = [
   { x: 18, y: 22, t: "Nti njma dyali f lyali lmdlmin." },
-  { x: 46, y: 12, t: "Kol mra katdhki, kayd3wi 9albi." },
+  { x: 46, y: 12, t: "Kol mra katdhki, kidawi 9albi." },
   { x: 80, y: 20, t: "M3ak, l'ayam kat douz dghya." },
   { x: 64, y: 40, t: "Kanfker fik 9bel man3es, w mli kanfi9." },
   { x: 28, y: 48, t: "Nti a7ssen « sba7 lkhir » f nhari." },
@@ -61,12 +61,12 @@ const DREAMS = [
   ["✈️", "Nsafro bjoj", "N3erfo blayes jdad m3a ba3d"],
   ["🏡", "Dar sghira dyalna", "3amra b dhk w b l7nan"],
   ["📸", "Album dyal dkriyat", "Kol 3am, tsawer jdad"],
-  ["🎂", "Nfaltiw ga3 l3yad", "20/12 kol 3am, m3a ba3d"],
+  ["🎂", "Mnflto ta 3iid ga3 a3yad", "20/12 kol 3am, m3a ba3d"],
   ["🌙", "Nchoufo l9mar bjoj", "Mn nfs lblassa, machi mn b3id"],
 ];
 
 const COUPONS = [
-  ["🤗", "Bon pour 1 3n9a twila", "Valable f ay w9t"],
+  ["🤗", "Bon pour 1 t3ni9a twila", "Valable f ay w9t"],
   ["🍦", "Bon pour 1 sortie", "Nti li katkhtari fin"],
   ["🕊️", "Bon pour sma7 f 1 dda3wa", "Bla ma nzid nhder fiha 😅"],
   ["📞", "Bon pour 1 appel 7ta l sba7", "Ila wa7chtini bzaf"],
@@ -525,7 +525,7 @@ $("chapter-btn").addEventListener("click", (e) => { e.currentTarget.hidden = tru
 /* ---------- greeting by time of day ---------- */
 (function greet() {
   const h = new Date().getHours();
-  const g = h >= 5 && h < 12 ? "Sba7 lkhir a Samia ☀️" : h < 18 ? "Nhar sa3id a Samia 🌤️" : h < 23 ? "Msa lkhir a Samia 🌙" : "Lila sa3ida a Samia ✨";
+  const g = h >= 5 && h < 12 ? "Sba7 lkhir a hbibti ☀️" : h < 18 ? "Nhar sa3id a hbibti 🌤️" : h < 23 ? "Msa lkhir a hbibti 🌙" : "Lila sa3ida a hbibti ✨";
   $("greeting").textContent = g;
 })();
 
@@ -533,7 +533,7 @@ $("chapter-btn").addEventListener("click", (e) => { e.currentTarget.hidden = tru
 const DAILY = [
   "Nti a7ssen 7aja w9e3at liya f 7yati.",
   "Kol nhar m3ak kayswa 3am.",
-  "Ila tbasmti lyoum, rak dirti nhari zwin.",
+  "Ila tbasmti lyoum, ghdi doz nhark zwin.",
   "Kanfker fik… dima, w bla ma n3ya.",
   "Nti ra7a dyali f had dnya.",
   "Wakha lb3d, 9albi 3ndek.",
@@ -630,8 +630,8 @@ monthLine();
 /* ---------- mood check ---------- */
 const MOODS = [
   ["😊", "Far7ana", "Hadi a7ssen khbar f nhari! Khlli dhektek 3amra had lwjha 😍"],
-  ["🥰", "Mwa7cha", "Ta ana wa7chek bzaf… sifti liya message daba, kantsnak 💌"],
-  ["😔", "Mdi9a", "Ji 3ndi w 7kili kolchi. Nti machi bo7dek, w ana hna dima ❤️"],
+  ["🥰", "Mwa7chani", "Ta ana wa7chek bzaf… sifti liya message daba, kantsnak 💌"],
+  ["😔", "M9l9a", "Ji 3ndi w 7kili kolchi. Nti machi bo7dek, w ana hna dima ❤️"],
   ["😴", "3eyana", "Sir n3si chwiya a 7bibti… w 7lmi biya 😴💤"],
   ["😤", "M3asba", "Chkon 3assbek?! 😤 Gouli liya… w ila kont ana, sma7 liya 🙈"],
 ];
@@ -657,5 +657,5 @@ function updatePostcard() {
   pcText.classList.toggle("empty", !v);
 }
 pcInput.addEventListener("input", updatePostcard);
-pcInput.addEventListener("change", () => { if (pcInput.value.trim()) { buzz(20); toast("Zwina! Daba dir screenshot w sifetha liya 📸"); } });
+pcInput.addEventListener("change", () => { if (pcInput.value.trim()) { buzz(20); toast("Zwina! Daba diri screenshot w syftiha lya 📸"); } });
 updatePostcard();
