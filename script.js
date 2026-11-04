@@ -222,7 +222,7 @@ function diffParts(from, to) {
 const partyTime = () => forceParty || new Date() >= ANNIVERSARY;
 function tick() {
   const now = new Date(), ms = now - START_DATE, p = diffParts(START_DATE, now);
-  $("c-years").textContent = p.y; $("l-years").textContent = p.y > 1 ? "snin" : "3am";
+  $("c-years").textContent = p.y; $("l-years").textContent = p.y > 1 ? "ans" : "3am";
   $("c-months").textContent = p.m; $("c-days").textContent = p.d;
   $("c-hours").textContent = pad(p.h); $("c-mins").textContent = pad(p.min); $("c-secs").textContent = pad(p.s);
   const days = ms / 86400000;
