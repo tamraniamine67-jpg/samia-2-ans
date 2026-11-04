@@ -5,20 +5,20 @@ const ANNIVERSARY = new Date(2026, 11, 20, 0, 0, 0);      // 20/12/2026
 const FUTURE_LETTER_DATE = new Date(2027, 11, 20, 0, 0, 0); // 20/12/2027
 
 const PHOTOS = [
-  { file: "photo-01.jpg", cap: "Nti w ana 🤍" },
-  { file: "photo-04.jpg", cap: "Ma Samia" },
-  { file: "photo-05.jpg", cap: "Zwina dima" },
-  { file: "photo-06.jpg", cap: "Bin lwrd 🌸" },
-  { file: "photo-02.jpg", cap: "Dhkat dyalna" },
-  { file: "photo-07.jpg", cap: "Golden hour" },
-  { file: "photo-09.jpg", cap: "Amira dyali" },
-  { file: "photo-08.jpg", cap: "Nour dyali" },
-  { file: "photo-10.jpg", cap: "Classe" },
-  { file: "photo-03.jpg", cap: "7na ❤️" },
-  { file: "photo-11.jpg", cap: "Ma préférée" },
-  { file: "photo-12.jpg", cap: "3inya" },
-  { file: "photo-13.jpg", cap: "Click 📸" },
-  { file: "photo-14.jpg", cap: "Dima nti" },
+  { file: "photo-01.jpg", cap: "Joj b lbyad, 9alb wa7ed 🤍" },
+  { file: "photo-04.jpg", cap: "Chems kat3ref smitek ☀️" },
+  { file: "photo-05.jpg", cap: "Rose? La… Samia 🌸" },
+  { file: "photo-06.jpg", cap: "Lwrd ghar menek" },
+  { file: "photo-02.jpg", cap: "Ras l fo9 ✌️" },
+  { file: "photo-07.jpg", cap: "Golden hour, golden girl" },
+  { file: "photo-09.jpg", cap: "Amira bla taj 👑" },
+  { file: "photo-08.jpg", cap: "Nour 3la nour" },
+  { file: "photo-10.jpg", cap: "Bab l7ob mfto7" },
+  { file: "photo-03.jpg", cap: "Hna… bla filtre" },
+  { file: "photo-11.jpg", cap: "Style ma kaytkhtarfch" },
+  { file: "photo-12.jpg", cap: "Lil zwin b sbabek 🌙" },
+  { file: "photo-13.jpg", cap: "Klik… w ana tbelt 📸" },
+  { file: "photo-14.jpg", cap: "F kol tswira, ghir nti" },
 ];
 
 const LANGS = [
@@ -614,3 +614,48 @@ function hugEnd() { hugHolding = false; hugBtn.classList.remove("pressing"); }
 hugBtn.addEventListener("pointerdown", hugStart);
 ["pointerup", "pointerleave", "pointercancel"].forEach((t) => hugBtn.addEventListener(t, hugEnd));
 hugBtn.addEventListener("contextmenu", (e) => e.preventDefault());
+
+/* ---------- next "20" of the month ---------- */
+function monthLine() {
+  const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const el = $("month-line");
+  if (now.getDate() === 20) { el.innerHTML = "Lyoum <b>20</b>! Mabrouk 3lina l3id sghir dyal had chhar 💌"; return; }
+  let next = new Date(now.getFullYear(), now.getMonth(), 20);
+  if (next <= today) next = new Date(now.getFullYear(), now.getMonth() + 1, 20);
+  const d = Math.round((next - today) / 86400000);
+  el.innerHTML = `W l <b>20</b> jay (l3id sghir dyalna kol chhar) ba9i <b>${d}</b> ${d === 1 ? "nhar" : "iyam"} 💌`;
+}
+monthLine();
+
+/* ---------- mood check ---------- */
+const MOODS = [
+  ["😊", "Far7ana", "Hadi a7ssen khbar f nhari! Khlli dhektek 3amra had lwjha 😍"],
+  ["🥰", "Mwa7cha", "Ta ana wa7chek bzaf… sifti liya message daba, kantsnak 💌"],
+  ["😔", "Mdi9a", "Ji 3ndi w 7kili kolchi. Nti machi bo7dek, w ana hna dima ❤️"],
+  ["😴", "3eyana", "Sir n3si chwiya a 7bibti… w 7lmi biya 😴💤"],
+  ["😤", "M3asba", "Chkon 3assbek?! 😤 Gouli liya… w ila kont ana, sma7 liya 🙈"],
+];
+const moodBox = $("moods");
+MOODS.forEach(([e, label, reply]) => {
+  const b = document.createElement("button");
+  b.className = "mood";
+  b.innerHTML = `<span>${e}</span><small>${label}</small>`;
+  b.addEventListener("click", () => {
+    moodBox.querySelectorAll(".mood").forEach((x) => x.classList.toggle("on", x === b));
+    const r = $("mood-reply"); r.hidden = true; void r.offsetWidth;
+    $("mood-text").textContent = reply; r.hidden = false; buzz(15);
+    if (e === "😊" || e === "🥰") burst(60, .55);
+  });
+  moodBox.appendChild(b);
+});
+
+/* ---------- postcard ---------- */
+const pcInput = $("pc-input"), pcText = $("pc-text");
+function updatePostcard() {
+  const v = pcInput.value.trim();
+  pcText.textContent = v || "Kteb hna…";
+  pcText.classList.toggle("empty", !v);
+}
+pcInput.addEventListener("input", updatePostcard);
+pcInput.addEventListener("change", () => { if (pcInput.value.trim()) { buzz(20); toast("Zwina! Daba dir screenshot w sifetha liya 📸"); } });
+updatePostcard();

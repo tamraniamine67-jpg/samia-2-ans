@@ -76,6 +76,7 @@
     </div>
     <p class="hand note-line"><span id="c-total">0</span> nhar… w ba9i ktab twil 3la wdna ✍️</p>
 
+    <p class="month-line" id="month-line"></p>
     <h3 class="mini-title">2 ans… b l'ar9am</h3>
     <div class="numbers">
       <div class="num"><span>💓</span><b id="n-beats">0</b><small>d9a dyal 9lbi (ta9riban) mn nhar 3reftek</small></div>
@@ -93,6 +94,14 @@
       <p class="hand today-text" id="today-text"></p>
       <p class="today-hint">Rje3i ghedda… kayna kelma jdida kol nhar 😉</p>
     </div>
+  </section>
+
+  <!-- ============ MOOD ============ -->
+  <section class="page" id="mood">
+    <h2 class="title">Kifach nti <em>lyoum?</em></h2>
+    <p class="sub">Khtari l wjeh li b7alek daba… w ana 3ndi jawab lik</p>
+    <div class="moods" id="moods"></div>
+    <div class="mood-reply" id="mood-reply" hidden><p class="hand" id="mood-text"></p><span class="hand">— Amine</span></div>
   </section>
 
   <!-- ============ LANGUAGES ============ -->
@@ -117,54 +126,54 @@
         <span class="pin">📅</span>
         <div class="stop-card">
           <img style="object-position: 50% 60%" src="images/photo-03.jpg" alt="Amine w Samia" loading="lazy">
-          <span class="stop-date">20.12.2024</span>
-          <h3>Lbdya</h3>
-          <p>Nhar li bdat l7kaya. Ma kontch mt5ayl bli nti ghadi twelli wa7da mn a7ssen l7wayj li w9e3o liya f 7yati… w twelli 7yati w kolchi 3ndi.</p>
+          <span class="stop-date">Fasl 1 · 20.12.2024</span>
+          <h3>Ras b ras, 9alb b 9alb</h3>
+          <p>F had tswira ana kanchouf joj d l9loub kaybtasmo l ba3dhom… w nti, chno katchoufi? 😌</p>
         </div>
       </article>
       <article class="stop">
         <span class="pin">💬</span>
         <div class="stop-card">
           <img style="object-position: 50% 22%" src="images/photo-05.jpg" alt="Samia" loading="lazy">
-          <span class="stop-date">Awel message</span>
-          <h3>Mn 9lbek</h3>
-          <p>F dak nhar 7ssit b far7a kbira w b amal f l7ayat. 7ssitek 9riba liya bzaf, baghya liya lkhir, w dayrani kolchi f 7yatek. Hadchi li khllani nt9atel 3la wdek w 3la wd lmosta9bal dyalna.</p>
+          <span class="stop-date">Fasl 2 · Zin</span>
+          <h3>Rose 3la rose</h3>
+          <p>Lwardi kayliq lik… walakin dhektek hiya li katzyyen tswira. Ana f tswira ma kanchouf ghir nti.</p>
         </div>
       </article>
       <article class="stop">
         <span class="pin">🥰</span>
         <div class="stop-card">
           <img style="object-position: 50% 30%" src="images/photo-06.jpg" alt="Samia" loading="lazy">
-          <span class="stop-date">TikTok</span>
-          <h3>Message li attar fiya</h3>
-          <p>Kan tay7 liya lmoral bzaf, w b sbabek tla3 liya. Zdt bghitek ktar, 7it katfekri fina bjoj w 3titini lhedra li kont m7taj.</p>
+          <span class="stop-date">Fasl 3 · Lmousawira</span>
+          <h3>Chkon li kaysawer chkon?</h3>
+          <p>Nti katsawri l3alam, w ana baghi nsawrek nti. Sifti liya tswira dyal dhektek kol nhar… w ana nkhbbihom f 9albi.</p>
         </div>
       </article>
       <article class="stop">
         <span class="pin">🤍</span>
         <div class="stop-card">
           <img style="object-position: 50% 30%" src="images/photo-01.jpg" alt="Amine w Samia" loading="lazy">
-          <span class="stop-date">Awel tswira</span>
-          <h3>Bjoj b lbyad</h3>
-          <p>Nhar 9blha 3titini dik sensla li 3mri ma n7eyedha. W dik dhka dyalek hiya a7ssen dhka chft f 7yati. W kna labsin bjoj lbyad bla ma ntaf9o 🤍</p>
+          <span class="stop-date">Fasl 4 · Bjoj</span>
+          <h3>Lbyad liq lina 🤍</h3>
+          <p>Ila kan l7ob 3ndo lon, ghaykoun hada: safi, hani, w 3amer b nour… b7alek.</p>
         </div>
       </article>
       <article class="stop">
         <span class="pin">✌️</span>
         <div class="stop-card">
           <img style="object-position: 50% 45%" src="images/photo-16.jpg" alt="Amine w Samia" loading="lazy">
-          <span class="stop-date">Lhdat sghira</span>
-          <h3>Nti w ana, b l9alb</h3>
-          <p>Selfies, dhkat, w ayam 3adiyin… walakin m3ak kolhom katwelli dkriyat kankhbbihom f 9albi.</p>
+          <span class="stop-date">Fasl 5 · Dhk</span>
+          <h3>✌️ Salam mn 9albi</h3>
+          <p>Kayn li kaychouf dnya b 3inih… w ana kanchoufha b dhektek. Ila dhekti, dnya kamla katdhek m3ak.</p>
         </div>
       </article>
       <article class="stop">
         <span class="pin">🎂</span>
         <div class="stop-card">
           <img style="object-position: 50% 55%" src="images/photo-02.jpg" alt="Amine w Samia" loading="lazy">
-          <span class="stop-date">20.12.2026</span>
-          <h3>2 ans</h3>
-          <p>W hna wselna l 2 ans… w l'triq mazal twila 3la wdna.</p>
+          <span class="stop-date">20.12.2026 · 2 ans</span>
+          <h3>Ras l fo9, 9alb m3ak</h3>
+          <p>Joj d rous, sma wa7da, w l7ob kayzid. Ch7al mn « a7ssen nhar » ba9i lina? Bzaaaf, inchallah.</p>
         </div>
       </article>
       <p class="map-end hand">∞ lfasl jay…</p>
@@ -244,6 +253,22 @@
     <h2 class="title">Bons <em>dyal l7ob</em></h2>
     <p class="sub">Tickets sghar lik… valables 7yati kamla. Tapi bach t9t3i wa7ed 🎟️</p>
     <div class="coupons" id="coupon-list"></div>
+  </section>
+
+  <!-- ============ POSTCARD ============ -->
+  <section class="page" id="postcard">
+    <h2 class="title">Kteb liya <em>carte postale</em> ✍️</h2>
+    <p class="sub">Kteb chi kelma, w ghadi tban 3la tswira dyalna…</p>
+    <div class="postcard">
+      <div class="pc-photo"><img src="images/thumbs/photo-16.jpg" alt="Amine w Samia" loading="lazy"></div>
+      <div class="pc-side">
+        <span class="pc-stamp">♥ 2 ans</span>
+        <p class="hand pc-text" id="pc-text">Kteb hna…</p>
+        <p class="pc-to">L: <b>Amine</b></p>
+      </div>
+    </div>
+    <input class="pc-input" id="pc-input" type="text" maxlength="90" placeholder="Kteb hna lmessage dyalek…" autocomplete="off">
+    <p class="pc-hint">Mli tsali, dir screenshot w sifto liya 📸</p>
   </section>
 
   <!-- ============ ENVELOPE LETTER ============ -->

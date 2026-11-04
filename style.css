@@ -372,3 +372,29 @@ button { font-family: inherit; color: inherit; cursor: pointer; border: none; ba
 @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.06); } }
 .hug-pct { position: absolute; left: 0; right: 0; top: 38%; font-size: 1.8rem; color: var(--ink); pointer-events: none; }
 .hug-done { font-size: 1.6rem; color: var(--terra); margin-top: 1rem; line-height: 1.3; animation: pop .5s; }
+
+/* ---------- monthly 20th ---------- */
+.month-line { margin-top: .6rem; color: var(--ink-soft); }
+.month-line b { color: var(--terra); }
+
+/* ---------- mood ---------- */
+.moods { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; margin-top: 1.4rem; }
+.mood { background: #fff8ef; border: 2px solid var(--kraft); border-radius: 16px; padding: .6rem .2rem .5rem; box-shadow: 0 4px 0 var(--kraft); transition: transform .2s, border-color .2s; }
+.mood span { display: block; font-size: 1.8rem; line-height: 1.2; }
+.mood small { display: block; font-size: .7rem; color: var(--ink-soft); line-height: 1.2; margin-top: .2rem; }
+.mood.on { border-color: var(--terra); box-shadow: 0 4px 0 var(--terra); transform: translateY(-3px); }
+.mood-reply { margin: 1.2rem auto 0; max-width: 420px; background: #fffbe6; border-radius: 6px; padding: 1rem 1.2rem .6rem; box-shadow: var(--shadow); transform: rotate(-1deg); text-align: left; animation: pop .4s; }
+.mood-reply p { font-size: 1.5rem; line-height: 1.35; }
+.mood-reply span { display: block; text-align: right; color: var(--terra); font-size: 1.2rem; }
+
+/* ---------- postcard ---------- */
+.postcard { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin: 1.6rem auto 0; max-width: 520px; background: #fffdf7; padding: .8rem; border-radius: 6px; box-shadow: var(--shadow); transform: rotate(-1.5deg); border: 1px solid #eadcc6; text-align: left; }
+.pc-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 45%; border-radius: 3px; }
+.pc-side { position: relative; display: flex; flex-direction: column; border-left: 1px dashed var(--kraft); padding-left: .7rem; }
+.pc-stamp { align-self: flex-end; border: 2px dashed var(--terra); color: var(--terra); font-family: var(--serif); font-weight: 800; font-size: .75rem; padding: .3rem .4rem; transform: rotate(6deg); }
+.pc-text { flex: 1; font-size: 1.35rem; line-height: 1.3; margin-top: .6rem; color: var(--ink); word-break: break-word; }
+.pc-text.empty { color: #c9b89a; }
+.pc-to { border-top: 1px solid var(--kraft); padding-top: .3rem; font-size: .85rem; color: var(--ink-soft); }
+.pc-input { display: block; width: min(420px, 100%); margin: 1.4rem auto 0; padding: .85rem 1.1rem; border-radius: 999px; border: 2px solid var(--kraft); background: #fff8ef; font: 600 1rem var(--sans); color: var(--ink); text-align: center; outline: none; }
+.pc-input:focus { border-color: var(--terra); }
+.pc-hint { margin-top: .6rem; color: var(--ink-soft); font-size: .88rem; }
