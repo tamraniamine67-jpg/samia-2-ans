@@ -398,3 +398,10 @@ button { font-family: inherit; color: inherit; cursor: pointer; border: none; ba
 .pc-input { display: block; width: min(420px, 100%); margin: 1.4rem auto 0; padding: .85rem 1.1rem; border-radius: 999px; border: 2px solid var(--kraft); background: #fff8ef; font: 600 1rem var(--sans); color: var(--ink); text-align: center; outline: none; }
 .pc-input:focus { border-color: var(--terra); }
 .pc-hint { margin-top: .6rem; color: var(--ink-soft); font-size: .88rem; }
+
+/* ---------- no zoom / no sideways scroll on phones ---------- */
+html, body { overflow-x: hidden; max-width: 100%; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
+html { touch-action: manipulation; }
+.promise { overflow: hidden; }
+input, textarea, select { font-size: 16px; }
