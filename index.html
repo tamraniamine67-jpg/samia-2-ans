@@ -3,212 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090615">
   <title>Amine ♥ Samia · 2 ans</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>">
-  <!-- Fonts load in the background; the page still works with built-in fonts if Google is blocked -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link id="gfonts" rel="stylesheet" media="print"
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Great+Vibes&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="locked">
+<body>
 
-  <canvas id="confetti" aria-hidden="true"></canvas>
-  <div class="hearts" aria-hidden="true"></div>
+<div id="stars" aria-hidden="true"></div>
+<div id="hearts" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
 
-  <!-- ============ OPENING ============ -->
-  <div class="intro" id="intro">
-    <div class="intro-inner">
-      <div class="envelope-icon" aria-hidden="true">💌</div>
-      <p class="intro-small">Pour toi, Samia…</p>
-      <h1 class="intro-title script">3ndi chi haja sghira lik</h1>
-      <button class="btn btn-big" id="open-btn">7elliha ♥</button>
-    </div>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+<button class="back" id="back-btn" aria-label="Rje3" hidden>‹</button>
+
+<!-- 1. WELCOME -->
+<section id="welcome" class="screen active">
+  <div class="content">
+    <div class="big-heart">❤️</div>
+    <p class="small-title">Wa7d l mofaja2a sghira lik ✨</p>
+    <h1 class="names">Amine <span class="beat">♥</span> Samia</h1>
+    <p class="intro">
+      Joj snin… w hadchi kaml ghir lik nti ❤️<br>
+      7it 20/12 machi nhar 3adi…<br>
+      howa nhar li bdat fih l7kaya dyalna.
+    </p>
+    <button class="primary" data-go="lock">Dkhli nchoufo l mofaja2a ✨</button>
   </div>
+</section>
 
-  <!-- ============ HERO ============ -->
-  <header class="hero">
-    <div class="hero-text reveal">
-      <p class="eyebrow">20.12.2024 &nbsp;→&nbsp; 20.12.2026</p>
-      <h1 class="names"><span class="script">Amine</span><span class="amp">♥</span><span class="script">Samia</span></h1>
-      <p class="tagline">Joj snin dyal l7ob, dyal dhk, w dyal nti.</p>
-      <p class="tagline fr">Deux ans à t'aimer… et ce n'est que le début.</p>
-      <a href="#countdown" class="btn">Kemmli ↓</a>
-    </div>
-    <div class="hero-photos reveal" aria-hidden="true">
-      <figure class="polaroid p1"><img src="images/photo-01.jpg" alt=""><figcaption>nous ♥</figcaption></figure>
-      <figure class="polaroid p2"><img src="images/photo-04.jpg" alt=""><figcaption>ma Samia</figcaption></figure>
-      <figure class="polaroid p3"><img src="images/photo-09.jpg" alt=""><figcaption>toujours</figcaption></figure>
-    </div>
-  </header>
+<!-- 2. LOCK -->
+<section id="lock" class="screen">
+  <div class="card">
+    <div class="icon" id="lock-icon">🔐</div>
+    <h2>3ndi lik wa7d sir sghir...</h2>
+    <p>Dkhli ltarikh li 3ndo ma3na kbir 3ndna ❤️</p>
+    <input id="secret" type="text" inputmode="numeric" autocomplete="off" placeholder="nhar / chhar / 3am">
+    <button class="primary" id="unlock-btn">7elli lbab ❤️</button>
+    <p id="lock-error" class="error" aria-live="polite"></p>
+    <p class="hint">Ila knti kat3rfini mzyan, ghadi t3rfih 😉</p>
+  </div>
+</section>
 
-  <!-- ============ COUNTDOWN / CELEBRATION ============ -->
-  <section id="countdown" class="section countdown">
-    <div id="cd-waiting">
-      <h2 class="reveal">Ch7al ba9i <span class="accent">l 3id dyalna</span></h2>
-      <p class="sub reveal">20 décembre 2026 · 2 ans m3a ba3diyatna</p>
-      <div class="clock four reveal">
-        <div class="unit"><span id="cd-days">0</span><small>jours</small></div>
-        <div class="unit"><span id="cd-hours">00</span><small>heures</small></div>
-        <div class="unit"><span id="cd-mins">00</span><small>min</small></div>
-        <div class="unit"><span id="cd-secs">00</span><small>sec</small></div>
+<!-- 3. STORY + COUNTER -->
+<section id="story" class="screen">
+  <div class="card">
+    <div class="icon">❤️</div>
+    <h2>Lbidaya dyal l7kaya</h2>
+    <p class="soft">Kol 7kaya zwina 3ndha bidaya...</p>
+    <div class="photo-frame"><img src="images/photo-03.jpg" alt="Amine w Samia"></div>
+    <p class="date">📅 20/12/2024</p>
+    <p class="message">
+      Mn dak nhar w ana ma kontch mt5ayl bli nti ghadi twelli
+      wa7da mn a7ssen l7wayj li w9e3o liya f 7yati…
+      w twelli 7yati w kolchi 3ndi ❤️
+    </p>
+
+    <div class="together">
+      <h3>W hadi ch7al w 7na m3a ba3d ⏳</h3>
+      <div class="clock six">
+        <div class="unit"><span id="c-years">0</span><small id="l-years">3am</small></div>
+        <div class="unit"><span id="c-months">0</span><small>chhar</small></div>
+        <div class="unit"><span id="c-days">0</span><small>nhar</small></div>
+        <div class="unit"><span id="c-hours">00</span><small>sa3a</small></div>
+        <div class="unit"><span id="c-mins">00</span><small>d9i9a</small></div>
+        <div class="unit"><span id="c-secs">00</span><small>tanya</small></div>
       </div>
+      <p class="total"><strong id="c-total">0</strong> nhar… w kol wa7ed fihom kan a7la m3ak ❤️</p>
     </div>
-    <div id="cd-party" class="party" hidden>
-      <p class="party-emoji">🎉💖🎂</p>
-      <h2 class="script party-title">Joyeux 2 ans, mon amour</h2>
-      <p class="sub">Lyoum kamlna 2 snin m3a ba3diyatna. Mabrouk 3lina, w l3a9ba l 100 sna ♥</p>
-      <button class="btn" id="party-btn">Encore des confettis 🎊</button>
-    </div>
-  </section>
 
-  <!-- ============ TOGETHER COUNTER ============ -->
-  <section class="section together">
-    <h2 class="reveal">W hadi ch7al <span class="accent">w 7na m3a ba3d</span></h2>
-    <p class="sub reveal">Depuis le 20 décembre 2024</p>
-    <div class="clock six reveal">
-      <div class="unit"><span id="c-years">0</span><small id="l-years">an</small></div>
-      <div class="unit"><span id="c-months">0</span><small>mois</small></div>
-      <div class="unit"><span id="c-days">0</span><small>jours</small></div>
-      <div class="unit"><span id="c-hours">00</span><small>heures</small></div>
-      <div class="unit"><span id="c-mins">00</span><small>min</small></div>
-      <div class="unit"><span id="c-secs">00</span><small>sec</small></div>
-    </div>
-    <p class="total reveal"><strong id="c-total">0</strong> jours… w kol wa7ed fihom kan a7la m3ak ♥</p>
-  </section>
+    <button class="primary" data-go="memories">Kmmli m3aya a 7bibti ❤️</button>
+  </div>
+</section>
 
-  <!-- ============ STORY ============ -->
-  <section class="section story">
-    <h2 class="reveal">Notre histoire</h2>
-    <p class="sub reveal">Chi lhdat sghira… li kayna f 9albi kbira</p>
+<!-- 4. MEMORIES -->
+<section id="memories" class="screen">
+  <div class="section-content">
+    <div class="icon">🥹</div>
+    <h2>Dkriyatna</h2>
+    <p class="soft">Chwiya mn l7dat li 3mri ma nensahom f 7yati</p>
 
     <div class="timeline">
-      <article class="moment reveal">
-        <img src="images/photo-03.jpg" alt="Amine w Samia" loading="lazy">
-        <div class="moment-text">
-          <span class="date">20 décembre 2024</span>
-          <h3>Lbdya</h3>
-          <p>Nhar li bda kolchi. Ma knt 3ref bli dak nhar ghadi ybeddel 7yati kamla… walakin 9albi kan 3ref.</p>
-        </div>
-      </article>
-      <article class="moment reveal">
+      <article class="memory">
         <img src="images/photo-05.jpg" alt="Samia" loading="lazy">
-        <div class="moment-text">
-          <span class="date">Les premiers jours</span>
-          <h3>Nti f bali, dima</h3>
-          <p>Kol message mnek kan ydir liya nhar. W b chwiya b chwiya, wlliti nti awel haja kanfker fiha f sba7, w akhir haja 9bel man3es.</p>
+        <div>
+          <span>💬</span>
+          <h3>Awel message ktbtih liya mn 9lbek</h3>
+          <p>F dak nhar 7ssit b far7a kbira w b l7ob li 3titih liya, w b amal f l7ayat. 7ssitek 9riba liya bzaf, katbghini w baghya liya lkhir, w dayrani kolchi f 7yatek. Hadchi li khllani nzid nt9atel 3la wdek, w 3la wd lmosta9bal dyalna ❤️</p>
         </div>
       </article>
-      <article class="moment reveal">
+      <article class="memory">
+        <img src="images/photo-06.jpg" alt="Samia" loading="lazy">
+        <div>
+          <span>🥰</span>
+          <h3>Awel message ktbtih liya f TikTok li attar fiya bzaf</h3>
+          <p>F dak nhar kan tay7 liya lmoral bzaf, w b sbabek 7ssit b far7a w tla3 liya lmoral. Zdt bghitek ktar w ktar, 7it katfekri fina bjoj w 3titini lhedra li kont m7taj ❤️</p>
+        </div>
+      </article>
+      <article class="memory">
         <img src="images/photo-01.jpg" alt="Amine w Samia" loading="lazy">
-        <div class="moment-text">
-          <span class="date">Nos fous rires</span>
-          <h3>Dhk dyalna</h3>
-          <p>Selfies mkhwrin, wjouh mdhkin, w dhka li ma katsalach. M3ak, 7ta l7aja l3adiya katwli souvenir zwin.</p>
+        <div>
+          <span>📸</span>
+          <h3>Awel tswira tsawrnaha m3a ba3diyatna</h3>
+          <p>Had tswira kat3ni liya bzaf a kbida dyali. Nhar 9blha 3titini dik sensla li 3mri ma n7eyedha. W dik dhka dyalek hiya a7ssen dhka chft f 7yati — lfar7a kanet bayna f 3inik. W kna labsin bjoj lbyad bla ma ntaf9o 🤍</p>
         </div>
       </article>
-      <article class="moment reveal">
-        <img src="images/photo-04.jpg" alt="Samia" loading="lazy">
-        <div class="moment-text">
-          <span class="date">Près ou loin</span>
-          <h3>Dima m3ak</h3>
-          <p>Wakha lw9t, wakha lmasafa… 9albi 3ndek. Kol appel, kol tswira, kol « tsb7i 3la khir » kay9arrbna ktar.</p>
+      <article class="memory">
+        <img src="images/photo-15.jpg" alt="Tswira mdhka" loading="lazy">
+        <div>
+          <span>😂</span>
+          <h3>Aktar tswira katdhakni w kat3jbni</h3>
+          <p>Kna gdam f sawy3, chefna reel fih zouj dayrin hadi, w glna aji ndirouha 7ta 7na. Kna fer7anin bzaaaf ❤️</p>
         </div>
       </article>
-      <article class="moment reveal">
+      <article class="memory wide">
         <img src="images/photo-02.jpg" alt="Amine w Samia" loading="lazy">
-        <div class="moment-text">
-          <span class="date">20 décembre 2026</span>
+        <div>
+          <span>🎉</span>
           <h3>2 ans… w lmazal</h3>
-          <p>Joj snin dazo b7al chi l7da. W ana baghi 3mri kaml m3ak, inchallah. Hada ghir lfasl lawel.</p>
+          <p>Joj snin dazo b7al chi l7da. W kol nhar m3ak kayzid chi dkra jdida f 9albi. Hada ghir lfasl lawel ❤️</p>
         </div>
       </article>
     </div>
-  </section>
 
-  <!-- ============ GALLERY ============ -->
-  <section class="section gallery-section">
-    <h2 class="reveal">Nti, f kol tswira</h2>
-    <p class="sub reveal">Clique sur une photo ♥</p>
+    <button class="primary" data-go="gallery-screen">Chofi tsawer dyalek 📸</button>
+  </div>
+</section>
+
+<!-- 5. GALLERY -->
+<section id="gallery-screen" class="screen">
+  <div class="section-content">
+    <div class="icon">📸</div>
+    <h2>Nti f kol tswira</h2>
+    <p class="soft">Klixi 3la tswira bach tkber ❤️</p>
     <div class="gallery" id="gallery"></div>
-    <div class="center"><button class="btn" id="play-all">▶ Diaporama</button></div>
-  </section>
+    <button class="secondary" id="play-all">▶ Diaporama</button>
+    <button class="primary" data-go="letters">3ndi lik chwiya dyal rassa2el 💌</button>
+  </div>
+</section>
 
-  <!-- ============ REASONS ============ -->
-  <section class="section reasons">
-    <h2 class="reveal">A3lach kanbghik</h2>
-    <p class="sub reveal">Kliki 3la kol carte ♥ · touche une carte pour la retourner</p>
+<!-- 6. LETTERS -->
+<section id="letters" class="screen">
+  <div class="section-content">
+    <div class="icon">💌</div>
+    <h2>Rassa2el lik</h2>
+    <p class="soft">Kol wa7da 7elliha f wa9tha... ❤️</p>
+    <div class="letters-grid" id="letters-grid"></div>
+    <button class="primary" data-go="reasons">A3lach kanbghik? 🥹</button>
+  </div>
+</section>
+
+<!-- 7. REASONS -->
+<section id="reasons" class="screen">
+  <div class="section-content">
+    <div class="icon">💖</div>
+    <h2>A3lach kanbghik</h2>
+    <p class="soft">Klixi 3la kol carte ❤️</p>
     <div class="cards" id="cards"></div>
-  </section>
+    <button class="primary" data-go="quiz">Yallah nl3bo chwiya 🎮</button>
+  </div>
+</section>
 
-  <!-- ============ LETTER ============ -->
-  <section class="section letter-section">
-    <h2 class="reveal">Une lettre pour toi</h2>
-    <div class="envelope reveal" id="envelope">
-      <button class="env-front" id="env-btn" aria-label="Ouvrir la lettre">
-        <span class="seal">♥</span>
-        <span class="env-label">Ouvre-moi, Samia</span>
-      </button>
-      <div class="letter" id="letter">
-        <p class="script greeting">Samia dyali,</p>
-        <p>Lyoum kankteb lik w 9albi 3amer. Joj snin hadi mn nhar 20 décembre 2024, w kayban liya b7al ila bdina lbar7.</p>
-        <p>Chokran 3la kol dhka, kol message, w kol mrra kounti m3aya mli kont m7taj lik. Chokran 3la sbrek, 3la 7nanek, w 3la l7ob li kat3tini bla 7sab.</p>
-        <p>Mon amour, tu es ma paix, ma joie et ma plus belle chance. Avec toi, même les jours ordinaires deviennent des souvenirs.</p>
-        <p>Ma 3ndich klmat kafyin bach nwssef ch7al kanbghik… walakin 3ndi 3mer kaml bach nwerrih lik.</p>
-        <p>Joyeux 2 ans, ya a7la haja f 7yati.</p>
-        <p class="sign">Dyalek dima,<br><span class="script">Amine ♥</span></p>
+<!-- 8. QUIZ -->
+<section id="quiz" class="screen">
+  <div class="card">
+    <div class="icon">😏</div>
+    <h2>Wa7d l3ba sghira</h2>
+    <p class="soft">Ch7al kat3rfini?</p>
+    <div id="quiz-box"></div>
+  </div>
+</section>
+
+<!-- 9. COUNTDOWN / CELEBRATION -->
+<section id="countdown" class="screen">
+  <div class="card">
+    <div id="cd-waiting">
+      <div class="icon">⏳</div>
+      <h2>Ch7al ba9i l 2 ans dyalna</h2>
+      <p class="soft">20/12/2026 · nhar l3id dyalna ❤️</p>
+      <div class="clock four">
+        <div class="unit"><span id="cd-days">0</span><small>nhar</small></div>
+        <div class="unit"><span id="cd-hours">00</span><small>sa3a</small></div>
+        <div class="unit"><span id="cd-mins">00</span><small>d9i9a</small></div>
+        <div class="unit"><span id="cd-secs">00</span><small>tanya</small></div>
       </div>
+      <p class="message">Ana kan7seb kol tanya 7ta l dak nhar… 🥹</p>
     </div>
-  </section>
-
-  <!-- ============ PROMISES ============ -->
-  <section class="section promises">
-    <h2 class="reveal">Mes promesses</h2>
-    <ul class="promise-list">
-      <li class="reveal"><span>♥</span>N9ad m3ak f l7olwa w f lmorra.</li>
-      <li class="reveal"><span>♥</span>Ndhhkek 7ta f l'ayyam l9assyin.</li>
-      <li class="reveal"><span>♥</span>Nkoun dima sadi9 m3ak, w n3awnek f a7lamek.</li>
-      <li class="reveal"><span>♥</span>Nbghik kol nhar ktar mn lbar7.</li>
-    </ul>
-  </section>
-
-  <!-- ============ SURPRISE ============ -->
-  <section class="section surprise">
-    <div class="surprise-box reveal" id="surprise-box">
-      <img src="images/photo-14.jpg" alt="Samia" class="surprise-photo" loading="lazy">
-      <p class="eyebrow">Wa7ed so2al akhir…</p>
-      <h2>Samia, wach tbghi tkemmli m3aya<br>l 3am jay… w li moraha… w li moraha?</h2>
-      <div class="answers">
-        <button class="btn" id="yes-btn">Oui ♥</button>
-        <button class="btn btn-ghost" id="no-btn">La</button>
-      </div>
+    <div id="cd-party" hidden>
+      <div class="icon bounce">🎂</div>
+      <h1>Joyeux 2 ans ❤️</h1>
+      <p class="message">Lyoum kamlna 2 snin m3a ba3diyatna!<br>Mabrouk 3lina a 7bibti… w l3a9ba l 100 sna 🎉</p>
+      <button class="secondary" id="party-btn">Zidi confettis 🎊</button>
     </div>
-    <div class="final" id="final" hidden>
-      <p class="final-small">Kont 3ref 😌</p>
-      <h2 class="script final-title">Kanbghik bzaf, Samia</h2>
-      <p class="final-fr">À nous. Pour toujours.</p>
-      <p class="final-sign">— Amine</p>
-    </div>
-  </section>
+    <button class="primary" data-go="question">Ba9i wa7d so2al… 🙈</button>
+  </div>
+</section>
 
-  <footer class="footer">
-    <p><span class="heart-beat">♥</span> Fait avec amour par Amine, pour Samia · 20.12.2026</p>
-  </footer>
-
-  <!-- ============ LIGHTBOX ============ -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lb-close" aria-label="Fermer">✕</button>
-    <button class="lb-prev" aria-label="Précédente">‹</button>
-    <figure class="lb-figure">
-      <img id="lb-img" alt="">
-      <figcaption id="lb-cap"></figcaption>
-    </figure>
-    <button class="lb-next" aria-label="Suivante">›</button>
-    <div class="lb-bar">
-      <span id="lb-count"></span>
-      <button id="lb-play">▶ Auto</button>
+<!-- 10. QUESTION -->
+<section id="question" class="screen">
+  <div class="card">
+    <img src="images/photo-14.jpg" alt="Samia" class="round-photo">
+    <p class="small-title">Wa7ed so2al akhir…</p>
+    <h2>Samia, wach tbghi tkemmli m3aya l 3am jay… w li moraha… w li moraha?</h2>
+    <div class="answers">
+      <button class="primary inline" id="yes-btn">Ah ❤️</button>
+      <button class="secondary inline" id="no-btn">La</button>
     </div>
   </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- 11. FINAL -->
+<section id="final" class="screen">
+  <div class="final-content">
+    <div class="cake">💖</div>
+    <h1>Kanbghik bzaf</h1>
+    <h2>2 ans m3ak a Samia ❤️</h2>
+    <p class="final-message">
+      Lyoum machi ghir 2 snin dazo…<br>
+      lyoum howa joj snin dyal l7ob, dyal dhk, w dyal dkriyat zwina m3ak.
+      <br><br>
+      W ana kan7med Allah 7it kont m7dod bach n3rfek,
+      w twelli 3ndek blassa kbira f 9albi ❤️
+      <br><br>
+      Kantmna had l3am jdid dyalna yjib lina kol 7aja zwina,
+      w tb9a dhektek dima 3amra had lwjha zwina.
+      <br><br>
+      W hada machi awel w la akher 3id dyalna…
+      kol 3am ghadi nkoun m3ak fih a 7yati,
+      w li jay a7ssen mn li fat ❤️✨
+    </p>
+    <p class="signature">Kanbghik bzaf,<br>Amine ♥</p>
+    <button class="primary" id="surprise-btn">Ba9i wa7d l mofaja2a 🎁</button>
+    <button class="secondary" id="restart-btn">3awdi mn lowel ↺</button>
+  </div>
+</section>
+
+<!-- LETTER MODAL -->
+<div id="letter-modal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="close" aria-label="Sedd">×</button>
+    <div class="modal-icon" id="letter-icon">💌</div>
+    <h2 id="letter-title"></h2>
+    <p id="letter-text"></p>
+  </div>
+</div>
+
+<!-- SURPRISE MODAL -->
+<div id="surprise-modal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="close" aria-label="Sedd">×</button>
+    <div class="modal-icon">💖</div>
+    <h2>Wa7d l wa3d lik...</h2>
+    <p>Ma n9derch nw3dek bli kol nhar ghadi ykoun kaml zwin...
+
+Walakin n9der nw3dek b wa7d l7aja:
+
+Ghadi nb9a nbghik 7yati kamla,
+w nb9a n7awel nfer7ek w ndir kol ma f jehdi bach nchouf dhektek,
+nb9a nsme3 lik w l hedertek,
+nkhllik tzidi tbghini,
+nb9a 9rib lik w kolchi lik,
+n3tik l7anan, l2aman, ti9a w l7ob,
+ndir lmosta7il 3la wdek,
+w nb9a nsna3 m3ak dkriyat zwina ❤️
+
+Joyeux 2 ans a 7bibti zwina, amira dyali, lfnikicha, dyamondat 3inya ✨</p>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Sedd">✕</button>
+  <button class="lb-prev" aria-label="Lowla">‹</button>
+  <figure class="lb-figure">
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+  <button class="lb-next" aria-label="Jaya">›</button>
+  <div class="lb-bar"><span id="lb-count"></span><button id="lb-play">▶ Auto</button></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
